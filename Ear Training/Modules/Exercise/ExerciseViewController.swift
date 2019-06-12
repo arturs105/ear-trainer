@@ -15,6 +15,8 @@ class ExerciseViewController : UIViewController {
     @IBOutlet weak var promptLabel: UILabel!
     @IBOutlet weak var questionView: UIView!
     @IBOutlet weak var closeButton: UIButton!
+    @IBOutlet weak var lessonOutroView: UIView!
+    @IBOutlet weak var doneButton: UIButton!
     
     func inject(presenter: ExercisePresenter, viewModel: ExerciseViewModel) {
         self.presenter = presenter
@@ -46,28 +48,38 @@ class ExerciseViewController : UIViewController {
             .subscribe(onNext: presenter.dismiss)
             .disposed(by: disposeBag)
 
+        doneButton.rx.tap
+            .subscribe(onNext: presenter.dismiss)
+            .disposed(by: disposeBag)
+        
         //ViewModel -> UI
         viewModel.title
             .drive(lessonTitleLabel.rx.text)
             .disposed(by: disposeBag)
 
-        viewModel.questionState
-            .map({[unowned self] state in self.colorFor(questionState: state)})
+        viewModel.currentQuestionState
+            .map(ExerciseViewController.colorFor)
             .drive(view.rx.backgroundColor)
             .disposed(by: disposeBag)
         
-        viewModel.questionState
-            .map({[unowned self] state in self.promptTextFor(questionState: state)})
+        viewModel.currentQuestionState
+            .map(ExerciseViewController.promptTextFor)
             .drive(promptLabel.rx.text)
             .disposed(by: disposeBag)
         
-        viewModel.exerciseHasBegun
+        viewModel.exerciseState
+            .map(ExerciseViewController.shouldHideIntro)
             .drive(lessonIntroView.rx.isHidden)
             .disposed(by: disposeBag)
-
-        viewModel.exerciseHasBegun
-            .map(invertBoolean)
+        
+        viewModel.exerciseState
+            .map(ExerciseViewController.shouldHideExerciseQuestion)
             .drive(questionView.rx.isHidden)
+            .disposed(by: disposeBag)
+        
+        viewModel.exerciseState
+            .map(ExerciseViewController.shouldHideOutro)
+            .drive(lessonOutroView.rx.isHidden)
             .disposed(by: disposeBag)
     }
     
@@ -75,7 +87,7 @@ class ExerciseViewController : UIViewController {
         print("deinit vc")
     }
     
-    private func colorFor(questionState: QuestionViewModelState) -> UIColor {
+    private static func colorFor(questionState: CurrentQuestionState) -> UIColor {
         switch questionState {
             case .PlayingSample: return UIColor.green
             case .Listening: return UIColor.init(red: 0.5, green: 0.5, blue: 0.7, alpha: 1)
@@ -86,7 +98,7 @@ class ExerciseViewController : UIViewController {
         }
     }
     
-    private func promptTextFor(questionState: QuestionViewModelState) -> String {
+    private static func promptTextFor(questionState: CurrentQuestionState) -> String {
         switch questionState {
             case .PlayingSample: return "Listen!"
             case .Listening: return "Play the same note!"
@@ -95,6 +107,18 @@ class ExerciseViewController : UIViewController {
             case .Correct: return "Fooking right"
             case .Error: return "Fuck this shit, i got an error"
         }
+    }
+    
+    private static func shouldHideIntro(questionState: ExerciseState) -> Bool {
+        return questionState != .ShowingIntro
+    }
+    
+    private static func shouldHideExerciseQuestion(questionState: ExerciseState) -> Bool {
+        return questionState != .InProgress
+    }
+    
+    private static func shouldHideOutro(questionState: ExerciseState) -> Bool {
+        return questionState != .ShowingOutro
     }
     
     private func addTapRecognizer() -> UITapGestureRecognizer {

@@ -99,6 +99,41 @@
                                     <constraint firstItem="Lwp-nl-kIQ" firstAttribute="centerY" secondItem="8kQ-bh-uuB" secondAttribute="centerY" id="vcV-sk-OhZ"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bGi-fn-a1q" userLabel="Lesson Outro View">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Success!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y0f-79-HPB">
+                                        <rect key="frame" x="144" y="330" width="126" height="38.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Some more text goes here. Maybe some accuracy, or the duration of exercise... who knows?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VZR-mz-DOu">
+                                        <rect key="frame" x="16" y="389" width="382" height="86"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Cq-dG-x8L">
+                                        <rect key="frame" x="0.0" y="718" width="414" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="izR-lr-wP2"/>
+                                        </constraints>
+                                        <state key="normal" title="Done"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="y0f-79-HPB" firstAttribute="centerX" secondItem="bGi-fn-a1q" secondAttribute="centerX" id="9RL-sh-sMl"/>
+                                    <constraint firstItem="y0f-79-HPB" firstAttribute="centerY" secondItem="bGi-fn-a1q" secondAttribute="centerY" constant="-60" id="Gmu-Uo-tXx"/>
+                                    <constraint firstItem="VZR-mz-DOu" firstAttribute="leading" secondItem="bGi-fn-a1q" secondAttribute="leading" constant="16" id="NkX-7S-crq"/>
+                                    <constraint firstItem="1Cq-dG-x8L" firstAttribute="leading" secondItem="bGi-fn-a1q" secondAttribute="leading" id="TzB-DT-wcK"/>
+                                    <constraint firstItem="VZR-mz-DOu" firstAttribute="top" secondItem="y0f-79-HPB" secondAttribute="bottom" constant="20.5" id="d7B-14-tux"/>
+                                    <constraint firstAttribute="bottom" secondItem="1Cq-dG-x8L" secondAttribute="bottom" id="hN8-So-39l"/>
+                                    <constraint firstAttribute="trailing" secondItem="VZR-mz-DOu" secondAttribute="trailing" constant="16" id="imS-Ao-qLS"/>
+                                    <constraint firstAttribute="trailing" secondItem="1Cq-dG-x8L" secondAttribute="trailing" id="rUK-8e-JgU"/>
+                                </constraints>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VNa-72-yW5">
                                 <rect key="frame" x="16" y="60" width="39" height="30"/>
                                 <state key="normal" title="Close"/>
@@ -107,6 +142,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="VNa-72-yW5" firstAttribute="top" secondItem="6Ww-Hj-eJs" secondAttribute="top" constant="16" id="5uL-mZ-m24"/>
+                            <constraint firstItem="6Ww-Hj-eJs" firstAttribute="trailing" secondItem="bGi-fn-a1q" secondAttribute="trailing" id="90X-l1-ezh"/>
+                            <constraint firstItem="6Ww-Hj-eJs" firstAttribute="bottom" secondItem="bGi-fn-a1q" secondAttribute="bottom" id="EfV-HB-Fur"/>
+                            <constraint firstItem="bGi-fn-a1q" firstAttribute="leading" secondItem="6Ww-Hj-eJs" secondAttribute="leading" id="Hgf-OY-W0G"/>
                             <constraint firstItem="6Ww-Hj-eJs" firstAttribute="bottom" secondItem="8kQ-bh-uuB" secondAttribute="bottom" id="HuI-hf-NNF"/>
                             <constraint firstItem="8kQ-bh-uuB" firstAttribute="top" secondItem="6Ww-Hj-eJs" secondAttribute="top" id="Mhh-3r-S1u"/>
                             <constraint firstItem="7mK-b6-8IX" firstAttribute="leading" secondItem="6Ww-Hj-eJs" secondAttribute="leading" id="Xru-kG-6BY"/>
@@ -114,6 +152,7 @@
                             <constraint firstItem="6Ww-Hj-eJs" firstAttribute="trailing" secondItem="7mK-b6-8IX" secondAttribute="trailing" id="amZ-0D-7cf"/>
                             <constraint firstItem="6Ww-Hj-eJs" firstAttribute="bottom" secondItem="7mK-b6-8IX" secondAttribute="bottom" id="cy7-Bw-BhJ"/>
                             <constraint firstItem="7mK-b6-8IX" firstAttribute="top" secondItem="6Ww-Hj-eJs" secondAttribute="top" id="erj-j3-azo"/>
+                            <constraint firstItem="bGi-fn-a1q" firstAttribute="top" secondItem="6Ww-Hj-eJs" secondAttribute="top" id="gbq-p8-Cb5"/>
                             <constraint firstItem="8kQ-bh-uuB" firstAttribute="leading" secondItem="6Ww-Hj-eJs" secondAttribute="leading" id="tBJ-84-DfI"/>
                             <constraint firstItem="VNa-72-yW5" firstAttribute="leading" secondItem="6Ww-Hj-eJs" secondAttribute="leading" constant="16" id="xU3-6e-wXK"/>
                         </constraints>
@@ -121,8 +160,10 @@
                     </view>
                     <connections>
                         <outlet property="beginLessonButton" destination="m3h-xY-kGy" id="K15-Fj-nqx"/>
-                        <outlet property="closeButton" destination="VNa-72-yW5" id="NsF-Qy-Oge"/>
+                        <outlet property="closeButton" destination="VNa-72-yW5" id="oct-dy-dTG"/>
+                        <outlet property="doneButton" destination="1Cq-dG-x8L" id="KgX-Ik-PJh"/>
                         <outlet property="lessonIntroView" destination="8kQ-bh-uuB" id="nPP-eU-HJZ"/>
+                        <outlet property="lessonOutroView" destination="bGi-fn-a1q" id="i1i-8Q-0AX"/>
                         <outlet property="lessonTitleLabel" destination="bYm-VD-LO9" id="RIa-7t-vBp"/>
                         <outlet property="promptLabel" destination="PkB-dZ-dl7" id="kx8-wU-gBD"/>
                         <outlet property="questionView" destination="7mK-b6-8IX" id="9jV-kj-Bu2"/>

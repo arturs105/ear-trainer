@@ -19,7 +19,8 @@ class ExerciseListViewModel {
         }
     
         exercises = [
-            Exercise(title: "Test Exercise", questions: questions)
+            Exercise(title: "Test Exercise", questions: questions),
+            Exercise(title: "Only F2", questions: [Question(note: try! Note(letter: .F, octave: 2))])
         ]
     }
     
