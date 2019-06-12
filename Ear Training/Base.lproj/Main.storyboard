@@ -50,10 +50,6 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7mK-b6-8IX" userLabel="Question View">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VNa-72-yW5">
-                                        <rect key="frame" x="16" y="16" width="39" height="30"/>
-                                        <state key="normal" title="Close"/>
-                                    </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Listen!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PkB-dZ-dl7">
                                         <rect key="frame" x="172.5" y="394.5" width="69.5" height="29"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="24"/>
@@ -63,8 +59,6 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="VNa-72-yW5" firstAttribute="leading" secondItem="7mK-b6-8IX" secondAttribute="leading" constant="16" id="CRN-4B-OtH"/>
-                                    <constraint firstItem="VNa-72-yW5" firstAttribute="top" secondItem="7mK-b6-8IX" secondAttribute="top" constant="16" id="HtF-pg-ETY"/>
                                     <constraint firstItem="PkB-dZ-dl7" firstAttribute="centerY" secondItem="7mK-b6-8IX" secondAttribute="centerY" id="SF8-de-yed"/>
                                     <constraint firstItem="PkB-dZ-dl7" firstAttribute="centerX" secondItem="7mK-b6-8IX" secondAttribute="centerX" id="cFS-gQ-Jn5"/>
                                 </constraints>
@@ -105,9 +99,17 @@
                                     <constraint firstItem="Lwp-nl-kIQ" firstAttribute="centerY" secondItem="8kQ-bh-uuB" secondAttribute="centerY" id="vcV-sk-OhZ"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VNa-72-yW5">
+                                <rect key="frame" x="16" y="60" width="39" height="30"/>
+                                <state key="normal" title="Close"/>
+                                <connections>
+                                    <action selector="closeAction:" destination="2g1-gi-XJ4" eventType="touchUpInside" id="9K6-UP-5aD"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="VNa-72-yW5" firstAttribute="top" secondItem="6Ww-Hj-eJs" secondAttribute="top" constant="16" id="5uL-mZ-m24"/>
                             <constraint firstItem="6Ww-Hj-eJs" firstAttribute="bottom" secondItem="8kQ-bh-uuB" secondAttribute="bottom" id="HuI-hf-NNF"/>
                             <constraint firstItem="8kQ-bh-uuB" firstAttribute="top" secondItem="6Ww-Hj-eJs" secondAttribute="top" id="Mhh-3r-S1u"/>
                             <constraint firstItem="7mK-b6-8IX" firstAttribute="leading" secondItem="6Ww-Hj-eJs" secondAttribute="leading" id="Xru-kG-6BY"/>
@@ -116,6 +118,7 @@
                             <constraint firstItem="6Ww-Hj-eJs" firstAttribute="bottom" secondItem="7mK-b6-8IX" secondAttribute="bottom" id="cy7-Bw-BhJ"/>
                             <constraint firstItem="7mK-b6-8IX" firstAttribute="top" secondItem="6Ww-Hj-eJs" secondAttribute="top" id="erj-j3-azo"/>
                             <constraint firstItem="8kQ-bh-uuB" firstAttribute="leading" secondItem="6Ww-Hj-eJs" secondAttribute="leading" id="tBJ-84-DfI"/>
+                            <constraint firstItem="VNa-72-yW5" firstAttribute="leading" secondItem="6Ww-Hj-eJs" secondAttribute="leading" constant="16" id="xU3-6e-wXK"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Ww-Hj-eJs"/>
                     </view>

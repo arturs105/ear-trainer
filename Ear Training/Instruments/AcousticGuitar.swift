@@ -1,9 +1,11 @@
 import Foundation
 import RxSwift
 import Pitchy
+import AVFoundation
 
-class AcousticGuitar: Instrument {
-    private let audioService: AudioService
+class AcousticGuitar: NSObject, Instrument, AVAudioPlayerDelegate {
+    private var audioPlayer: AVAudioPlayer?
+    private var finishedPlayingSubject: PublishSubject<Unit>?
     
     let name = "Acoustic Guitar"
     static let availableNotes = [
@@ -13,16 +15,31 @@ class AcousticGuitar: Instrument {
         try! Note(letter: .B, octave: 2),
     ]
     
-    init(audioService: AudioService) {
-        self.audioService = audioService
-    }
-    
     func playNote(note: Note) throws -> Observable<Unit> {
+        if audioPlayer?.isPlaying ?? false {
+            audioPlayer?.stop()
+            audioPlayer = nil
+
+            finishedPlayingSubject?.onCompleted()
+            finishedPlayingSubject = nil
+        }
         let audioSample = sample(for: note)
-        return try audioService.playSample(url: audioSample)
+        finishedPlayingSubject = PublishSubject<Unit>()
+        audioPlayer = try! AVAudioPlayer(contentsOf: audioSample)
+        audioPlayer?.delegate = self
+        audioPlayer?.play()
+        return finishedPlayingSubject!.asObservable()
     }
     
-    func sample(for note: Note) -> URL {
+    private func sample(for note: Note) -> URL {
         return Bundle.main.url(forResource: note.string, withExtension: "mp3")!
-    }   
+    }
+    
+    func stopPlaying() {
+        audioPlayer?.stop()
+    }
+    
+    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+        finishedPlayingSubject?.onCompleted()
+    }
 }

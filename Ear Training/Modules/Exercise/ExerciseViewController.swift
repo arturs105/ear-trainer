@@ -15,6 +15,9 @@ class ExerciseViewController : UIViewController {
     @IBOutlet weak var promptLabel: UILabel!
     @IBOutlet weak var questionView: UIView!
     @IBOutlet weak var closeButton: UIButton!
+    @IBAction func closeAction(_ sender: Any) {
+        self.dismiss(animated: true)
+    }
     
     func inject(presenter: ExercisePresenter, viewModel: ExerciseViewModel) {
         self.presenter = presenter
@@ -27,44 +30,52 @@ class ExerciseViewController : UIViewController {
         setupBindings()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        viewModel.stopPlaying()
+    }
+    
     private func setupBindings() {
         //UI -> ViewModel
         beginLessonButton.rx.tap
             .subscribe(onNext: viewModel.beginExercise)
             .disposed(by: disposeBag)
-        
+
         addTapRecognizer().rx.event
-            .bind(onNext: {[unowned self] _ in self.viewModel!.replayNote()})
+            .bind(onNext: {[unowned self] _ in self.viewModel.replayNote()})
             .disposed(by: disposeBag)
-        
+
         //UI -> Presenter
         closeButton.rx.tap
-            .subscribe(onNext: {[unowned self] _ in self.presenter.dismiss()})
+            .subscribe(onNext: presenter.dismiss)
             .disposed(by: disposeBag)
-        
+
         //ViewModel -> UI
         viewModel.title
             .drive(lessonTitleLabel.rx.text)
             .disposed(by: disposeBag)
-        
+
         viewModel.questionState
-            .map(colorFor)
+            .map({[unowned self] state in self.colorFor(questionState: state)})
             .drive(view.rx.backgroundColor)
             .disposed(by: disposeBag)
         
         viewModel.questionState
-            .map(promptTextFor)
+            .map({[unowned self] state in self.promptTextFor(questionState: state)})
             .drive(promptLabel.rx.text)
             .disposed(by: disposeBag)
         
         viewModel.exerciseHasBegun
             .drive(lessonIntroView.rx.isHidden)
             .disposed(by: disposeBag)
-        
+
         viewModel.exerciseHasBegun
             .map(invertBoolean)
             .drive(questionView.rx.isHidden)
             .disposed(by: disposeBag)
+    }
+    
+    deinit {
+        print("deinit vc")
     }
     
     private func colorFor(questionState: QuestionViewModelState) -> UIColor {

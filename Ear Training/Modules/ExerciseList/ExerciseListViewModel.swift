@@ -8,7 +8,7 @@ class ExerciseListViewModel {
     var exercises: [Exercise] = []
     
     init(audioService: AudioService) {
-        let initialInstrument = AcousticGuitar(audioService: audioService)
+        let initialInstrument = AcousticGuitar()
         instrument = BehaviorRelay<Instrument>(value: initialInstrument)
         
         var questions = [Question]()

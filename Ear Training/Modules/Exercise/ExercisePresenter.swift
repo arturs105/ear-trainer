@@ -20,6 +20,10 @@ class ExercisePresenter {
         return viewController
     }
     
+    deinit {
+        print("deinit presenter")
+    }
+    
     func dismiss() {
         viewController.dismiss(animated: true)
     }

@@ -45,36 +45,44 @@ class ExerciseViewModel {
         questionState = exerciseStateRelay.skip(1).asDriver(onErrorJustReturn: .Error)
         
         questionState.asObservable()
-            .subscribe(onNext: handleStateChange)
+            .subscribe(onNext: { [unowned self] state in self.handleStateChange(state) })
             .disposed(by: disposeBag)
     }
     
     deinit {
-        stopListening()
+        print("deinit vm")
     }
     
     public func beginExercise() {
         exerciseHasBegunSubject.onNext(true)
         exerciseStateRelay.accept(.PlayingSample)
     }
-    
+
     public func replayNote() {
         let statesWithReplayEnabled: [QuestionViewModelState] = [
             .Listening,
             .NoteTooHigh,
             .NoteTooLow
         ]
-    
+
         guard statesWithReplayEnabled.contains(exerciseStateRelay.value) else {
             return
         }
-        
+
+        instrument.stopPlaying()
         stopListening()
-        _ = try! instrument.playNote(note: noteToGuess)
-            .subscribe(onCompleted: listenForNote)
+        
+        try! instrument.playNote(note: noteToGuess)
+            .subscribe(onCompleted: { [unowned self] in self.listenForNote() })
+            .disposed(by: disposeBag)
+    }
+
+    public func stopPlaying() {
+        stopListening()
+        instrument.stopPlaying()
     }
     
-    private func handleStateChange(state: QuestionViewModelState) {
+    private func handleStateChange(_ state: QuestionViewModelState) {
         switch state {
             case .PlayingSample:
                 playNote()
@@ -86,19 +94,20 @@ class ExerciseViewModel {
                 break
         }
     }
-    
+
     private func playNote() {
-        _ = try! instrument.playNote(note: noteToGuess)
+        try! instrument.playNote(note: noteToGuess)
             .subscribe(
-                onCompleted: { self.exerciseStateRelay.accept(.Listening) }
+                onCompleted: { [unowned self] in self.exerciseStateRelay.accept(.Listening) }
             )
+            .disposed(by: disposeBag)
     }
-    
+
     private func listenForNote() {
         pitchDetectionSubscription = audioService.detectPitch()
             .subscribe(onNext: onPitchDetected)
     }
-    
+
     private func onPitchDetected(note: Note) {
         if (potentialNote?.string ?? "" == note.string) {
             potentialNoteOccurences += 1
@@ -106,12 +115,12 @@ class ExerciseViewModel {
             potentialNote = note
             potentialNoteOccurences = 1
         }
-        
+
         if (potentialNoteOccurences >= noteOccurencesNeeded) {
             checkIfPotentialNoteIsCorrect()
         }
     }
-    
+
     private func checkIfPotentialNoteIsCorrect() {
         if (potentialNote!.string == noteToGuess.string) {
             exerciseStateRelay.accept(.Correct)
@@ -119,19 +128,19 @@ class ExerciseViewModel {
             pitchDetectionSubscription = nil
             return
         }
-        
+
         if (potentialNote!.frequency > noteToGuess.frequency) {
             exerciseStateRelay.accept(.NoteTooHigh)
         } else {
             exerciseStateRelay.accept(.NoteTooLow)
         }
     }
-    
+
     private func stopListening() {
         pitchDetectionSubscription?.dispose()
         pitchDetectionSubscription = nil
     }
-    
+
     private func goToNextQuestion() {
         potentialNote = nil
         potentialNoteOccurences = 0
