@@ -15,9 +15,6 @@ class ExerciseViewController : UIViewController {
     @IBOutlet weak var promptLabel: UILabel!
     @IBOutlet weak var questionView: UIView!
     @IBOutlet weak var closeButton: UIButton!
-    @IBAction func closeAction(_ sender: Any) {
-        self.dismiss(animated: true)
-    }
     
     func inject(presenter: ExercisePresenter, viewModel: ExerciseViewModel) {
         self.presenter = presenter
