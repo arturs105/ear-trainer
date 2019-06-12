@@ -1,0 +1,34 @@
+PODS:
+  - Beethoven (4.0.2):
+    - Pitchy (~> 3.0)
+  - Pitchy (3.0.0)
+  - RxCocoa (5.0.0):
+    - RxRelay (~> 5)
+    - RxSwift (~> 5)
+  - RxRelay (5.0.0):
+    - RxSwift (~> 5)
+  - RxSwift (5.0.0)
+
+DEPENDENCIES:
+  - Beethoven
+  - RxCocoa (~> 5)
+  - RxSwift (~> 5)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Beethoven
+    - Pitchy
+    - RxCocoa
+    - RxRelay
+    - RxSwift
+
+SPEC CHECKSUMS:
+  Beethoven: e517331e5087064e1c1fd3d3775fddb8d9f3017d
+  Pitchy: 15407e4425b6d88fa3e7eef8927ba659fab52d7a
+  RxCocoa: fcf32050ac00d801f34a7f71d5e8e7f23026dcd8
+  RxRelay: 4f7409406a51a55cd88483f21ed898c234d60f18
+  RxSwift: 8b0671caa829a763bbce7271095859121cbd895f
+
+PODFILE CHECKSUM: a06160254ca8c9d84873d685a28f5d2cd54d5b3a
+
+COCOAPODS: 1.7.1
