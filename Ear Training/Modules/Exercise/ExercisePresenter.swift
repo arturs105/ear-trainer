@@ -19,4 +19,8 @@ class ExercisePresenter {
         
         return viewController
     }
+    
+    func dismiss() {
+        viewController.dismiss(animated: true)
+    }
 }

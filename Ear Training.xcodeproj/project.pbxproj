@@ -27,7 +27,6 @@
 		5140CFE822AFCC5800DDFD36 /* CommonFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5140CFE722AFCC5800DDFD36 /* CommonFunctions.swift */; };
 		5140CFEB22AFD10700DDFD36 /* AudioService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5140CFEA22AFD10700DDFD36 /* AudioService.swift */; };
 		5140CFF322AFDEF500DDFD36 /* Instrument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5140CFF222AFDEF500DDFD36 /* Instrument.swift */; };
-		5140CFF722AFE45300DDFD36 /* ElectricBass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5140CFF622AFE45300DDFD36 /* ElectricBass.swift */; };
 		5140CFF922B003F100DDFD36 /* AcousticGuitar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5140CFF822B003F100DDFD36 /* AcousticGuitar.swift */; };
 		5140CFFE22B0055000DDFD36 /* F2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5140CFFA22B0055000DDFD36 /* F2.mp3 */; };
 		5140CFFF22B0055000DDFD36 /* G2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5140CFFB22B0055000DDFD36 /* G2.mp3 */; };
@@ -57,7 +56,6 @@
 		5140CFE722AFCC5800DDFD36 /* CommonFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonFunctions.swift; sourceTree = "<group>"; };
 		5140CFEA22AFD10700DDFD36 /* AudioService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioService.swift; sourceTree = "<group>"; };
 		5140CFF222AFDEF500DDFD36 /* Instrument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Instrument.swift; sourceTree = "<group>"; };
-		5140CFF622AFE45300DDFD36 /* ElectricBass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElectricBass.swift; sourceTree = "<group>"; };
 		5140CFF822B003F100DDFD36 /* AcousticGuitar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcousticGuitar.swift; sourceTree = "<group>"; };
 		5140CFFA22B0055000DDFD36 /* F2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = F2.mp3; sourceTree = "<group>"; };
 		5140CFFB22B0055000DDFD36 /* G2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = G2.mp3; sourceTree = "<group>"; };
@@ -181,7 +179,6 @@
 			isa = PBXGroup;
 			children = (
 				5140CFF222AFDEF500DDFD36 /* Instrument.swift */,
-				5140CFF622AFE45300DDFD36 /* ElectricBass.swift */,
 				5140CFF822B003F100DDFD36 /* AcousticGuitar.swift */,
 			);
 			path = Instruments;
@@ -337,7 +334,6 @@
 				5140CFC722AEF6E300DDFD36 /* RandomNoteExercise.swift in Sources */,
 				5140CFCF22AF09F600DDFD36 /* ExerciseViewModel.swift in Sources */,
 				5105A34322AEDDE300624074 /* ExerciseListViewController.swift in Sources */,
-				5140CFF722AFE45300DDFD36 /* ElectricBass.swift in Sources */,
 				5105A34122AEDDE300624074 /* AppDelegate.swift in Sources */,
 				5140CFEB22AFD10700DDFD36 /* AudioService.swift in Sources */,
 				5140CFD922AF1FC400DDFD36 /* QuestionState.swift in Sources */,

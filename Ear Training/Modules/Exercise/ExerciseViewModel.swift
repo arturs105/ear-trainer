@@ -49,6 +49,10 @@ class ExerciseViewModel {
             .disposed(by: disposeBag)
     }
     
+    deinit {
+        stopListening()
+    }
+    
     public func beginExercise() {
         exerciseHasBegunSubject.onNext(true)
         exerciseStateRelay.accept(.PlayingSample)

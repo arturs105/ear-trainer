@@ -14,6 +14,7 @@ class ExerciseViewController : UIViewController {
     @IBOutlet weak var lessonIntroView: UIView!
     @IBOutlet weak var promptLabel: UILabel!
     @IBOutlet weak var questionView: UIView!
+    @IBOutlet weak var closeButton: UIButton!
     
     func inject(presenter: ExercisePresenter, viewModel: ExerciseViewModel) {
         self.presenter = presenter
@@ -33,7 +34,12 @@ class ExerciseViewController : UIViewController {
             .disposed(by: disposeBag)
         
         addTapRecognizer().rx.event
-            .bind(onNext: {[viewModel] _ in viewModel!.replayNote()})
+            .bind(onNext: {[unowned self] _ in self.viewModel!.replayNote()})
+            .disposed(by: disposeBag)
+        
+        //UI -> Presenter
+        closeButton.rx.tap
+            .subscribe(onNext: {[unowned self] _ in self.presenter.dismiss()})
             .disposed(by: disposeBag)
         
         //ViewModel -> UI
