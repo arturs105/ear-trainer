@@ -7,6 +7,16 @@ class AcousticGuitar: NSObject, Instrument, AVAudioPlayerDelegate {
     private var audioPlayer: AVAudioPlayer?
     private var finishedPlayingSubject: PublishSubject<Unit>?
     
+    private static var guitarInstance: AcousticGuitar?
+    static var sharedInstance: Instrument {
+        if guitarInstance == nil {
+            guitarInstance = AcousticGuitar()
+        }
+        return guitarInstance!
+    }
+    
+    private override init() { }
+    
     let name = "Acoustic Guitar"
     static let availableNotes = [
         try! Note(letter: .F, octave: 2),

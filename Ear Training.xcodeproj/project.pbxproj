@@ -34,6 +34,7 @@
 		51465D9822B1A424008A580F /* MultipleNoteQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51465D9722B1A424008A580F /* MultipleNoteQuestion.swift */; };
 		51465D9A22B1A53C008A580F /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51465D9922B1A53C008A580F /* Exercise.swift */; };
 		51465D9C22B1A5C1008A580F /* SingleNoteEndlessExercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51465D9B22B1A5C1008A580F /* SingleNoteEndlessExercise.swift */; };
+		51465D9E22B25FFE008A580F /* SimpleOscillator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51465D9D22B25FFE008A580F /* SimpleOscillator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,6 +66,7 @@
 		51465D9722B1A424008A580F /* MultipleNoteQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MultipleNoteQuestion.swift; path = "/Users/arturs/Projects/Ear Training/Ear Training/Models/MultipleNoteQuestion.swift"; sourceTree = "<absolute>"; };
 		51465D9922B1A53C008A580F /* Exercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
 		51465D9B22B1A5C1008A580F /* SingleNoteEndlessExercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleNoteEndlessExercise.swift; sourceTree = "<group>"; };
+		51465D9D22B25FFE008A580F /* SimpleOscillator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleOscillator.swift; sourceTree = "<group>"; };
 		7431374ABB64A88C6FDB0E0F /* Pods-Ear Training.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ear Training.release.xcconfig"; path = "Target Support Files/Pods-Ear Training/Pods-Ear Training.release.xcconfig"; sourceTree = "<group>"; };
 		A8AB4DB8D029F113D1A49732 /* Pods_Ear_Training.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Ear_Training.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD390F57BF216B0B89752CAF /* Pods-Ear Training.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ear Training.debug.xcconfig"; path = "Target Support Files/Pods-Ear Training/Pods-Ear Training.debug.xcconfig"; sourceTree = "<group>"; };
@@ -186,6 +188,7 @@
 			children = (
 				5140CFF222AFDEF500DDFD36 /* Instrument.swift */,
 				5140CFF822B003F100DDFD36 /* AcousticGuitar.swift */,
+				51465D9D22B25FFE008A580F /* SimpleOscillator.swift */,
 			);
 			path = Instruments;
 			sourceTree = "<group>";
@@ -333,6 +336,7 @@
 				5140CFBF22AEE48200DDFD36 /* AudioSample.swift in Sources */,
 				5140CFBB22AEE27C00DDFD36 /* SingleNoteExercise.swift in Sources */,
 				5140CFD722AF19F200DDFD36 /* ExerciseViewController.swift in Sources */,
+				51465D9E22B25FFE008A580F /* SimpleOscillator.swift in Sources */,
 				5140CFDB22AFA19700DDFD36 /* ViewModelLocator.swift in Sources */,
 				5140CFF322AFDEF500DDFD36 /* Instrument.swift in Sources */,
 				51465D9A22B1A53C008A580F /* Exercise.swift in Sources */,

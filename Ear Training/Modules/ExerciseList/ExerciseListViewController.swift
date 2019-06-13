@@ -1,5 +1,6 @@
 import UIKit
 import Pitchy
+import AudioKit
 
 class ExerciseListViewController : UITableViewController {
     private var presenter: ExerciseListPresenter!

@@ -7,4 +7,6 @@ protocol Instrument {
     
     func playNote(note: Note) throws -> Observable<Unit>
     func stopPlaying()
+    
+    static var sharedInstance: Instrument { get }
 }
