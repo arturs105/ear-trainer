@@ -37,6 +37,7 @@ class ExerciseListPresenter {
     }
     
     private func showSingleNoteEndlessExercise(_ exercise: SingleNoteEndlessExercise) {
-        
+        let vc = ExercisePresenter.create(with: viewModelLocator, exercise: exercise, instrument: AcousticGuitar())
+        viewController.showDetailViewController(vc, sender: nil)
     }
 }

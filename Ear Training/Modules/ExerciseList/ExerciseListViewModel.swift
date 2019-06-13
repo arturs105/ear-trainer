@@ -12,7 +12,7 @@ class ExerciseListViewModel {
         instrument = BehaviorRelay<Instrument>(value: initialInstrument)
         
         var questions = [SingleNoteQuestion]()
-        for i in 1...50 {
+        for i in 1...5 {
             let indexRange = 0...3
             let randomNote = AcousticGuitar.availableNotes[Int.random(in: indexRange)]
             questions.append(SingleNoteQuestion(note: randomNote))

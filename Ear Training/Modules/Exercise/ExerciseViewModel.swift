@@ -18,13 +18,17 @@ enum CurrentQuestionState {
     case Error
 }
 
+enum ExerciseViewModelError: Error {
+    case unsupportedExerciseType
+}
+
 class ExerciseViewModel {
     private let noteOccurencesNeeded = 4
     private let secondsBeforeNextQuestion: Double = 2
     
     private let instrument: Instrument
     private let audioService: AudioService
-    private let exercise: SingleNoteExercise
+    private let exercise: Exercise
     
     private let exerciseStateSubject = BehaviorSubject(value: ExerciseState.ShowingIntro)
     private let currentQuestionStateRelay = BehaviorRelay<CurrentQuestionState>(value: .PlayingSample)
@@ -37,19 +41,30 @@ class ExerciseViewModel {
     private var pitchDetectionSubscription: Disposable?
     
     private var allQuestionsAnswered: Bool {
-        return questionsAnswered >= exercise.questions.count
+        switch exercise {
+            case let singleNoteExercise as SingleNoteExercise:
+                return questionsAnswered >= singleNoteExercise.questions.count
+            case is SingleNoteEndlessExercise:
+                return false
+            default:
+                return false
+            
+        }
     }
     
     let title: Driver<String>
     let currentQuestionState: Driver<CurrentQuestionState>
     let exerciseState: Driver<ExerciseState>
     
-    init(for exercise: SingleNoteExercise, instrument: Instrument, audioService: AudioService) {
+    init(for exercise: Exercise, instrument: Instrument, audioService: AudioService) throws {
+        guard exercise is SingleNoteExercise || exercise is SingleNoteEndlessExercise else {
+            throw ExerciseViewModelError.unsupportedExerciseType
+        }
+        
         self.instrument = instrument
         self.audioService = audioService
         self.exercise = exercise
         
-        noteToGuess = exercise.questions[0].note
         title = Observable.just(exercise.title).asDriver(onErrorJustReturn: "Oooops, an error :(")
         exerciseState = exerciseStateSubject.asDriver(onErrorJustReturn: ExerciseState.ShowingOutro)
         currentQuestionState = currentQuestionStateRelay.skip(1).asDriver(onErrorJustReturn: .Error)
@@ -57,6 +72,14 @@ class ExerciseViewModel {
         currentQuestionState.asObservable()
             .subscribe(onNext: { [unowned self] state in self.handleStateChange(state) })
             .disposed(by: disposeBag)
+        
+        if let endlessExercise = exercise as? SingleNoteEndlessExercise {
+            endlessExercise.questions.subscribe(onNext: {[unowned self] nextQuestion in
+                self.noteToGuess = nextQuestion.note
+            })
+            .disposed(by: disposeBag)
+        }
+        updateNoteToGuess()
     }
     
     deinit {
@@ -161,10 +184,21 @@ class ExerciseViewModel {
             return
         }
         
-        noteToGuess = exercise.questions[questionsAnswered].note
+        try! updateNoteToGuess()
     
         DispatchQueue.main.asyncAfter(deadline: .now() + secondsBeforeNextQuestion) { [unowned self] in
             self.currentQuestionStateRelay.accept(.PlayingSample)
+        }
+    }
+    
+    private func updateNoteToGuess() {
+        switch exercise {
+            case let singleNoteExercise as SingleNoteExercise:
+                noteToGuess = singleNoteExercise.questions[questionsAnswered].note
+            case let singleNoteEndlessExercise as SingleNoteEndlessExercise:
+                singleNoteEndlessExercise.getNextQuestion()
+            default:
+                break
         }
     }
     
