@@ -21,7 +21,22 @@ class ExerciseListPresenter {
     }
     
     func showExercise(_ exercise: Exercise, instrument: Instrument) {
-        let exerciseViewController = ExercisePresenter.create(with: viewModelLocator, exercise: exercise, instrument: instrument)
-        viewController.showDetailViewController(exerciseViewController, sender: nil)
+        switch exercise {
+            case let singleNoteExercise as SingleNoteExercise:
+                showSingleNoteExercise(singleNoteExercise)
+            case let singleNoteEndlessExercise as SingleNoteEndlessExercise:
+                showSingleNoteEndlessExercise(singleNoteEndlessExercise)
+            default:
+                print("Not implemented type of question")
+        }
+    }
+    
+    private func showSingleNoteExercise(_ exercise: SingleNoteExercise) {
+        let vc = ExercisePresenter.create(with: viewModelLocator, exercise: exercise, instrument: AcousticGuitar())
+        viewController.showDetailViewController(vc, sender: nil)
+    }
+    
+    private func showSingleNoteEndlessExercise(_ exercise: SingleNoteEndlessExercise) {
+        
     }
 }

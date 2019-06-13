@@ -1,11 +1,7 @@
 import Foundation
+import RxSwift
 
-class Exercise {
-    let title: String
-    let questions: [Question]
-    
-    init(title: String, questions: [Question]) {
-        self.title = title
-        self.questions = questions
-    }
+protocol Exercise {
+    var title: String { get }
+    var description: String { get }
 }

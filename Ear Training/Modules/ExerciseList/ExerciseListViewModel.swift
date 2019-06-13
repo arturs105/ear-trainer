@@ -11,18 +11,22 @@ class ExerciseListViewModel {
         let initialInstrument = AcousticGuitar()
         instrument = BehaviorRelay<Instrument>(value: initialInstrument)
         
-        var questions = [Question]()
-        for i in 1...10 {
+        var questions = [SingleNoteQuestion]()
+        for i in 1...50 {
             let indexRange = 0...3
             let randomNote = AcousticGuitar.availableNotes[Int.random(in: indexRange)]
-            questions.append(Question(note: randomNote))
+            questions.append(SingleNoteQuestion(note: randomNote))
         }
     
         exercises = [
-            Exercise(title: "Test Exercise", questions: questions),
-            Exercise(title: "Only F2", questions: [Question(note: try! Note(letter: .F, octave: 2))])
+            SingleNoteExercise(title: "5 questions, only F2, G2, A2 B2", description: "Some random notes", questions: questions),
+            SingleNoteExercise(title: "Only F2", description: "Only F2", questions: [SingleNoteQuestion(note: try! Note(letter: .F, octave: 2))]),
+            SingleNoteEndlessExercise(title: "Endless exercise", description: "Description goes here", questionGenerator: ExerciseListViewModel.getNextQuestion)
         ]
     }
     
+    private static func getNextQuestion() -> SingleNoteQuestion {
+        return SingleNoteQuestion(note: AcousticGuitar.availableNotes.randomElement()!)
+    }
     
 }

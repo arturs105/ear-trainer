@@ -1,6 +1,6 @@
 protocol ViewModelLocator {
     func getLessonListViewModel() -> ExerciseListViewModel
-    func getLessonViewModel(for exercise: Exercise, and instrument: Instrument) -> ExerciseViewModel
+    func getLessonViewModel(for exercise: SingleNoteExercise, and instrument: Instrument) -> ExerciseViewModel
 }
 
 class DefaultViewModelLocator : ViewModelLocator {
@@ -10,7 +10,7 @@ class DefaultViewModelLocator : ViewModelLocator {
         return ExerciseListViewModel(audioService: audioService)
     }
     
-    func getLessonViewModel(for exercise: Exercise, and instrument: Instrument) -> ExerciseViewModel {
+    func getLessonViewModel(for exercise: SingleNoteExercise, and instrument: Instrument) -> ExerciseViewModel {
         return ExerciseViewModel(for: exercise, instrument: instrument, audioService: audioService)
     }
 }

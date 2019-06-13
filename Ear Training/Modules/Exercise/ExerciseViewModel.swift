@@ -24,28 +24,32 @@ class ExerciseViewModel {
     
     private let instrument: Instrument
     private let audioService: AudioService
+    private let exercise: SingleNoteExercise
     
     private let exerciseStateSubject = BehaviorSubject(value: ExerciseState.ShowingIntro)
     private let currentQuestionStateRelay = BehaviorRelay<CurrentQuestionState>(value: .PlayingSample)
-    
-    private var noteToGuess: Note
-    private var potentialNote: Note?
-    private var potentialNoteOccurences = 0
     private let disposeBag = DisposeBag()
+    
+    private var noteToGuess: Note!
+    private var potentialNote: Note?
+    private var questionsAnswered = 0
+    private var potentialNoteOccurences = 0
     private var pitchDetectionSubscription: Disposable?
+    
+    private var allQuestionsAnswered: Bool {
+        return questionsAnswered >= exercise.questions.count
+    }
     
     let title: Driver<String>
     let currentQuestionState: Driver<CurrentQuestionState>
     let exerciseState: Driver<ExerciseState>
-    let questions: [Question]
-    var currentQuestionIndex = 0
     
-    init(for exercise: Exercise, instrument: Instrument, audioService: AudioService) {
+    init(for exercise: SingleNoteExercise, instrument: Instrument, audioService: AudioService) {
         self.instrument = instrument
         self.audioService = audioService
-    
-        questions = exercise.questions
-        noteToGuess = questions[0].note
+        self.exercise = exercise
+        
+        noteToGuess = exercise.questions[0].note
         title = Observable.just(exercise.title).asDriver(onErrorJustReturn: "Oooops, an error :(")
         exerciseState = exerciseStateSubject.asDriver(onErrorJustReturn: ExerciseState.ShowingOutro)
         currentQuestionState = currentQuestionStateRelay.skip(1).asDriver(onErrorJustReturn: .Error)
@@ -62,6 +66,14 @@ class ExerciseViewModel {
     public func beginExercise() {
         exerciseStateSubject.onNext(.InProgress)
         currentQuestionStateRelay.accept(.PlayingSample)
+    }
+    
+    private func playNote() {
+        try! instrument.playNote(note: noteToGuess)
+            .subscribe(
+                onCompleted: { [unowned self] in self.currentQuestionStateRelay.accept(.Listening) }
+            )
+            .disposed(by: disposeBag)
     }
 
     public func replayNote() {
@@ -95,18 +107,10 @@ class ExerciseViewModel {
             case .Listening:
                 listenForNote()
             case .Correct:
-                goToNextQuestionOrOutro()
+                setupNextQuestionWithDelay()
             default:
                 break
         }
-    }
-
-    private func playNote() {
-        try! instrument.playNote(note: noteToGuess)
-            .subscribe(
-                onCompleted: { [unowned self] in self.currentQuestionStateRelay.accept(.Listening) }
-            )
-            .disposed(by: disposeBag)
     }
 
     private func listenForNote() {
@@ -147,19 +151,19 @@ class ExerciseViewModel {
         pitchDetectionSubscription = nil
     }
 
-    private func goToNextQuestionOrOutro() {
+    private func setupNextQuestionWithDelay() {
         potentialNote = nil
         potentialNoteOccurences = 0
-        currentQuestionIndex += 1
+        questionsAnswered += 1
         
-        if currentQuestionIndex >= questions.count {
+        if (allQuestionsAnswered) {
             goToOutro()
             return
         }
         
-        noteToGuess = questions[currentQuestionIndex].note
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + secondsBeforeNextQuestion) {
+        noteToGuess = exercise.questions[questionsAnswered].note
+    
+        DispatchQueue.main.asyncAfter(deadline: .now() + secondsBeforeNextQuestion) { [unowned self] in
             self.currentQuestionStateRelay.accept(.PlayingSample)
         }
     }

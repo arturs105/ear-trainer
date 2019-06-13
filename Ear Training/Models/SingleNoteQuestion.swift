@@ -1,7 +1,7 @@
 import Foundation
 import Pitchy
 
-class Question {
+class SingleNoteQuestion {
     let note: Note
     let state: QuestionState = .Unanswered
     
