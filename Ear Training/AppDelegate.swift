@@ -18,7 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.backgroundColor = UIColor.blue
-        window?.rootViewController = ExerciseListPresenter.create(with: viewModelLocator)
+        let navigationController = UINavigationController(rootViewController: ExerciseListPresenter.create(with: viewModelLocator))
+        window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
         
         return true

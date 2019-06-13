@@ -31,4 +31,7 @@ class ExerciseListViewModel {
         return SingleNoteQuestion(note: AcousticGuitar.availableNotes.randomElement()!)
     }
     
+    func chooseInstrument() {
+        print("Choosing an instrument")
+    }
 }

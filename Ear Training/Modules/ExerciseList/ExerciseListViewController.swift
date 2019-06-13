@@ -1,4 +1,5 @@
 import UIKit
+import RxSwift
 import Pitchy
 import AudioKit
 
@@ -6,6 +7,7 @@ class ExerciseListViewController : UITableViewController {
     private var presenter: ExerciseListPresenter!
     private var viewModel: ExerciseListViewModel!
     
+    private let disposeBag = DisposeBag()
     private let cellIdentifier = "Fuck"
     private var exercises: [Exercise] = []
     
@@ -17,7 +19,13 @@ class ExerciseListViewController : UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        title = "Exercises"
+        
         exercises = viewModel.exercises
+        
+        setupChooseInstrumentButton().rx.tap
+            .subscribe(onNext: {[unowned self] in self.viewModel.chooseInstrument()})
+            .disposed(by: disposeBag)
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -43,6 +51,12 @@ class ExerciseListViewController : UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let exercise = exercises[indexPath.row]
         presenter.showExercise(exercise, instrument: viewModel.instrument.value)
+    }
+    
+    private func setupChooseInstrumentButton() -> UIBarButtonItem {
+        let barButton = UIBarButtonItem(title: "Instrument", style: .plain, target: nil, action: nil)
+        navigationItem.rightBarButtonItem = barButton
+        return barButton
     }
 }
 
