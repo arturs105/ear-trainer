@@ -1,16 +1,22 @@
 protocol ViewModelLocator {
     func getLessonListViewModel() -> ExerciseListViewModel
-    func getLessonViewModel(for exercise: Exercise, and instrument: Instrument) -> ExerciseViewModel
+    func getChooseInstrumentViewModel() -> ChooseInstrumentViewModel
+    func getLessonViewModel(for exercise: Exercise) -> ExerciseViewModel
 }
 
 class DefaultViewModelLocator : ViewModelLocator {
     private let audioService = DefaultAudioService()
+    private let instrumentService = DefaultInstrumentService()
     
     func getLessonListViewModel() -> ExerciseListViewModel {
         return ExerciseListViewModel(audioService: audioService)
     }
     
-    func getLessonViewModel(for exercise: Exercise, and instrument: Instrument) -> ExerciseViewModel {
-        return try! ExerciseViewModel(for: exercise, instrument: instrument, audioService: audioService)
+    func getLessonViewModel(for exercise: Exercise) -> ExerciseViewModel {
+        return try! ExerciseViewModel(for: exercise, instrumentService: instrumentService, audioService: audioService)
+    }
+    
+    func getChooseInstrumentViewModel() -> ChooseInstrumentViewModel {
+        return ChooseInstrumentViewModel(instrumentService: instrumentService)
     }
 }

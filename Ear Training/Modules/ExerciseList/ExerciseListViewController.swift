@@ -24,7 +24,7 @@ class ExerciseListViewController : UITableViewController {
         exercises = viewModel.exercises
         
         setupChooseInstrumentButton().rx.tap
-            .subscribe(onNext: {[unowned self] in self.viewModel.chooseInstrument()})
+            .subscribe(onNext: {[unowned self] in self.presenter.showChooseInstrumentView()})
             .disposed(by: disposeBag)
     }
     

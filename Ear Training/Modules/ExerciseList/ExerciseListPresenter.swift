@@ -31,6 +31,11 @@ class ExerciseListPresenter {
         }
     }
     
+    func showChooseInstrumentView() {
+        let vc = ChooseInstrumentPresenter.create(with: viewModelLocator)
+        viewController.navigationController?.pushViewController(vc, animated: true)
+    }
+    
     private func showSingleNoteExercise(_ exercise: SingleNoteExercise) {
         let vc = ExercisePresenter.create(with: viewModelLocator, exercise: exercise, instrument: SimpleOscillator.sharedInstance)
         viewController.showDetailViewController(vc, sender: nil)

@@ -35,6 +35,10 @@
 		51465D9A22B1A53C008A580F /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51465D9922B1A53C008A580F /* Exercise.swift */; };
 		51465D9C22B1A5C1008A580F /* SingleNoteEndlessExercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51465D9B22B1A5C1008A580F /* SingleNoteEndlessExercise.swift */; };
 		51465D9E22B25FFE008A580F /* SimpleOscillator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51465D9D22B25FFE008A580F /* SimpleOscillator.swift */; };
+		51465DA322B26D56008A580F /* InstrumentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51465DA222B26D56008A580F /* InstrumentService.swift */; };
+		51465DA522B26FB9008A580F /* ChooseInstrumentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51465DA422B26FB9008A580F /* ChooseInstrumentViewModel.swift */; };
+		51465DA722B2713E008A580F /* ChooseInstrumentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51465DA622B2713E008A580F /* ChooseInstrumentViewController.swift */; };
+		51465DA922B27176008A580F /* ChooseInstrumentPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51465DA822B27176008A580F /* ChooseInstrumentPresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,6 +71,10 @@
 		51465D9922B1A53C008A580F /* Exercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
 		51465D9B22B1A5C1008A580F /* SingleNoteEndlessExercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleNoteEndlessExercise.swift; sourceTree = "<group>"; };
 		51465D9D22B25FFE008A580F /* SimpleOscillator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleOscillator.swift; sourceTree = "<group>"; };
+		51465DA222B26D56008A580F /* InstrumentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentService.swift; sourceTree = "<group>"; };
+		51465DA422B26FB9008A580F /* ChooseInstrumentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseInstrumentViewModel.swift; sourceTree = "<group>"; };
+		51465DA622B2713E008A580F /* ChooseInstrumentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseInstrumentViewController.swift; sourceTree = "<group>"; };
+		51465DA822B27176008A580F /* ChooseInstrumentPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseInstrumentPresenter.swift; sourceTree = "<group>"; };
 		7431374ABB64A88C6FDB0E0F /* Pods-Ear Training.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ear Training.release.xcconfig"; path = "Target Support Files/Pods-Ear Training/Pods-Ear Training.release.xcconfig"; sourceTree = "<group>"; };
 		A8AB4DB8D029F113D1A49732 /* Pods_Ear_Training.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Ear_Training.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD390F57BF216B0B89752CAF /* Pods-Ear Training.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ear Training.debug.xcconfig"; path = "Target Support Files/Pods-Ear Training/Pods-Ear Training.debug.xcconfig"; sourceTree = "<group>"; };
@@ -138,6 +146,7 @@
 		5140CFE422AFB3F500DDFD36 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				51465DA122B26D14008A580F /* ChooseInstrument */,
 				5140CFE622AFB40600DDFD36 /* Exercise */,
 				5140CFE522AFB3FE00DDFD36 /* ExerciseList */,
 			);
@@ -168,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				5140CFEA22AFD10700DDFD36 /* AudioService.swift */,
+				51465DA222B26D56008A580F /* InstrumentService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -191,6 +201,16 @@
 				51465D9D22B25FFE008A580F /* SimpleOscillator.swift */,
 			);
 			path = Instruments;
+			sourceTree = "<group>";
+		};
+		51465DA122B26D14008A580F /* ChooseInstrument */ = {
+			isa = PBXGroup;
+			children = (
+				51465DA422B26FB9008A580F /* ChooseInstrumentViewModel.swift */,
+				51465DA622B2713E008A580F /* ChooseInstrumentViewController.swift */,
+				51465DA822B27176008A580F /* ChooseInstrumentPresenter.swift */,
+			);
+			path = ChooseInstrument;
 			sourceTree = "<group>";
 		};
 		59C746EE708A4E9FD9B17614 /* Frameworks */ = {
@@ -331,9 +351,12 @@
 			files = (
 				5140CFDF22AFA9C900DDFD36 /* ExercisePresenter.swift in Sources */,
 				5140CFF922B003F100DDFD36 /* AcousticGuitar.swift in Sources */,
+				51465DA522B26FB9008A580F /* ChooseInstrumentViewModel.swift in Sources */,
 				5140CFD122AF0D0300DDFD36 /* ExerciseListViewModel.swift in Sources */,
+				51465DA922B27176008A580F /* ChooseInstrumentPresenter.swift in Sources */,
 				5140CFE822AFCC5800DDFD36 /* CommonFunctions.swift in Sources */,
 				5140CFBF22AEE48200DDFD36 /* AudioSample.swift in Sources */,
+				51465DA722B2713E008A580F /* ChooseInstrumentViewController.swift in Sources */,
 				5140CFBB22AEE27C00DDFD36 /* SingleNoteExercise.swift in Sources */,
 				5140CFD722AF19F200DDFD36 /* ExerciseViewController.swift in Sources */,
 				51465D9E22B25FFE008A580F /* SimpleOscillator.swift in Sources */,
@@ -344,6 +367,7 @@
 				5140CFC322AEF4C500DDFD36 /* SingleNoteQuestion.swift in Sources */,
 				5140CFCF22AF09F600DDFD36 /* ExerciseViewModel.swift in Sources */,
 				5105A34322AEDDE300624074 /* ExerciseListViewController.swift in Sources */,
+				51465DA322B26D56008A580F /* InstrumentService.swift in Sources */,
 				5105A34122AEDDE300624074 /* AppDelegate.swift in Sources */,
 				51465D9C22B1A5C1008A580F /* SingleNoteEndlessExercise.swift in Sources */,
 				5140CFEB22AFD10700DDFD36 /* AudioService.swift in Sources */,

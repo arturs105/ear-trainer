@@ -56,12 +56,12 @@ class ExerciseViewModel {
     let currentQuestionState: Driver<CurrentQuestionState>
     let exerciseState: Driver<ExerciseState>
     
-    init(for exercise: Exercise, instrument: Instrument, audioService: AudioService) throws {
+    init(for exercise: Exercise, instrumentService: InstrumentService, audioService: AudioService) throws {
         guard exercise is SingleNoteExercise || exercise is SingleNoteEndlessExercise else {
             throw ExerciseViewModelError.unsupportedExerciseType
         }
         
-        self.instrument = instrument
+        self.instrument = instrumentService.currentlySelectedInstrument
         self.audioService = audioService
         self.exercise = exercise
         
