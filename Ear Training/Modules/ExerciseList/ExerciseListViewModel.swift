@@ -39,9 +39,6 @@ class ExerciseListViewModel {
             .map({scale in ScaleQuestionGenerator(for: scale)})
             .map({questionGenerator in SingleNoteEndlessExercise(title: questionGenerator.scale.description, description: "Description", questionGenerator: questionGenerator)})
         
-        let cMajor = Scale(type: .major, key: Key(type: .c))
-        let cMajorQuestionGenerator = ScaleQuestionGenerator(for: cMajor)
-        
         exercises = [
             SingleNoteExercise(title: "5 questions, only F2, G2, A2 B2", description: "Some random notes", questions: questions),
             SingleNoteExercise(title: "Only F2", description: "Only F2", questions: [SingleNoteQuestion(note: try! Note(letter: .F, octave: 2))]),
