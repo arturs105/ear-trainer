@@ -30,7 +30,6 @@
 		5140CFFF22B0055000DDFD36 /* G2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5140CFFB22B0055000DDFD36 /* G2.mp3 */; };
 		5140D00022B0055000DDFD36 /* A2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5140CFFC22B0055000DDFD36 /* A2.mp3 */; };
 		5140D00122B0055000DDFD36 /* B2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5140CFFD22B0055000DDFD36 /* B2.mp3 */; };
-		51465D9822B1A424008A580F /* MultipleNoteQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51465D9722B1A424008A580F /* MultipleNoteQuestion.swift */; };
 		51465D9A22B1A53C008A580F /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51465D9922B1A53C008A580F /* Exercise.swift */; };
 		51465D9C22B1A5C1008A580F /* SingleNoteEndlessExercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51465D9B22B1A5C1008A580F /* SingleNoteEndlessExercise.swift */; };
 		51465D9E22B25FFE008A580F /* SimpleOscillator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51465D9D22B25FFE008A580F /* SimpleOscillator.swift */; };
@@ -66,7 +65,6 @@
 		5140CFFB22B0055000DDFD36 /* G2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = G2.mp3; sourceTree = "<group>"; };
 		5140CFFC22B0055000DDFD36 /* A2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = A2.mp3; sourceTree = "<group>"; };
 		5140CFFD22B0055000DDFD36 /* B2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = B2.mp3; sourceTree = "<group>"; };
-		51465D9722B1A424008A580F /* MultipleNoteQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MultipleNoteQuestion.swift; path = "/Users/arturs/Projects/Ear Training/Ear Training/Models/MultipleNoteQuestion.swift"; sourceTree = "<absolute>"; };
 		51465D9922B1A53C008A580F /* Exercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
 		51465D9B22B1A5C1008A580F /* SingleNoteEndlessExercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleNoteEndlessExercise.swift; sourceTree = "<group>"; };
 		51465D9D22B25FFE008A580F /* SimpleOscillator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleOscillator.swift; sourceTree = "<group>"; };
@@ -221,7 +219,6 @@
 		51465DAD22B3ACC7008A580F /* Questions */ = {
 			isa = PBXGroup;
 			children = (
-				51465D9722B1A424008A580F /* MultipleNoteQuestion.swift */,
 				5140CFC222AEF4C500DDFD36 /* SingleNoteQuestion.swift */,
 				5140CFD822AF1FC400DDFD36 /* QuestionState.swift */,
 				51465DAE22B3ACFD008A580F /* ScaleQuestionGenerator.swift */,
@@ -388,7 +385,6 @@
 				51465D9C22B1A5C1008A580F /* SingleNoteEndlessExercise.swift in Sources */,
 				5140CFEB22AFD10700DDFD36 /* AudioService.swift in Sources */,
 				5140CFD922AF1FC400DDFD36 /* QuestionState.swift in Sources */,
-				51465D9822B1A424008A580F /* MultipleNoteQuestion.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
