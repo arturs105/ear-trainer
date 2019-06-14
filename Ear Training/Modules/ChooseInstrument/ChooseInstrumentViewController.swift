@@ -15,6 +15,10 @@ class ChooseInstrumentViewController : UITableViewController {
         self.viewModel = viewModel
     }
     
+    deinit {
+        print ("deinit choose instrument VC")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

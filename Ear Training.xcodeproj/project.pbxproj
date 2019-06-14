@@ -13,7 +13,6 @@
 		5105A34622AEDDE300624074 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5105A34422AEDDE300624074 /* Main.storyboard */; };
 		5105A34822AEDDE500624074 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5105A34722AEDDE500624074 /* Assets.xcassets */; };
 		5140CFBB22AEE27C00DDFD36 /* SingleNoteExercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5140CFBA22AEE27C00DDFD36 /* SingleNoteExercise.swift */; };
-		5140CFBF22AEE48200DDFD36 /* AudioSample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5140CFBE22AEE48200DDFD36 /* AudioSample.swift */; };
 		5140CFC322AEF4C500DDFD36 /* SingleNoteQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5140CFC222AEF4C500DDFD36 /* SingleNoteQuestion.swift */; };
 		5140CFCF22AF09F600DDFD36 /* ExerciseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5140CFCE22AF09F600DDFD36 /* ExerciseViewModel.swift */; };
 		5140CFD122AF0D0300DDFD36 /* ExerciseListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5140CFD022AF0D0300DDFD36 /* ExerciseListViewModel.swift */; };
@@ -39,6 +38,7 @@
 		51465DA522B26FB9008A580F /* ChooseInstrumentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51465DA422B26FB9008A580F /* ChooseInstrumentViewModel.swift */; };
 		51465DA722B2713E008A580F /* ChooseInstrumentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51465DA622B2713E008A580F /* ChooseInstrumentViewController.swift */; };
 		51465DA922B27176008A580F /* ChooseInstrumentPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51465DA822B27176008A580F /* ChooseInstrumentPresenter.swift */; };
+		51465DAF22B3ACFD008A580F /* ScaleQuestionGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51465DAE22B3ACFD008A580F /* ScaleQuestionGenerator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,7 +49,6 @@
 		5105A34722AEDDE500624074 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5105A34C22AEDDE500624074 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5140CFBA22AEE27C00DDFD36 /* SingleNoteExercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleNoteExercise.swift; sourceTree = "<group>"; };
-		5140CFBE22AEE48200DDFD36 /* AudioSample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioSample.swift; sourceTree = "<group>"; };
 		5140CFC222AEF4C500DDFD36 /* SingleNoteQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleNoteQuestion.swift; sourceTree = "<group>"; };
 		5140CFCE22AF09F600DDFD36 /* ExerciseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseViewModel.swift; sourceTree = "<group>"; };
 		5140CFD022AF0D0300DDFD36 /* ExerciseListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseListViewModel.swift; sourceTree = "<group>"; };
@@ -75,6 +74,7 @@
 		51465DA422B26FB9008A580F /* ChooseInstrumentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseInstrumentViewModel.swift; sourceTree = "<group>"; };
 		51465DA622B2713E008A580F /* ChooseInstrumentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseInstrumentViewController.swift; sourceTree = "<group>"; };
 		51465DA822B27176008A580F /* ChooseInstrumentPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseInstrumentPresenter.swift; sourceTree = "<group>"; };
+		51465DAE22B3ACFD008A580F /* ScaleQuestionGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleQuestionGenerator.swift; sourceTree = "<group>"; };
 		7431374ABB64A88C6FDB0E0F /* Pods-Ear Training.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ear Training.release.xcconfig"; path = "Target Support Files/Pods-Ear Training/Pods-Ear Training.release.xcconfig"; sourceTree = "<group>"; };
 		A8AB4DB8D029F113D1A49732 /* Pods_Ear_Training.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Ear_Training.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD390F57BF216B0B89752CAF /* Pods-Ear Training.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ear Training.debug.xcconfig"; path = "Target Support Files/Pods-Ear Training/Pods-Ear Training.debug.xcconfig"; sourceTree = "<group>"; };
@@ -132,13 +132,8 @@
 		5140CFB922AEE25400DDFD36 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				5140CFBA22AEE27C00DDFD36 /* SingleNoteExercise.swift */,
-				51465D9722B1A424008A580F /* MultipleNoteQuestion.swift */,
-				5140CFBE22AEE48200DDFD36 /* AudioSample.swift */,
-				5140CFC222AEF4C500DDFD36 /* SingleNoteQuestion.swift */,
-				5140CFD822AF1FC400DDFD36 /* QuestionState.swift */,
-				51465D9922B1A53C008A580F /* Exercise.swift */,
-				51465D9B22B1A5C1008A580F /* SingleNoteEndlessExercise.swift */,
+				51465DAD22B3ACC7008A580F /* Questions */,
+				51465DAA22B39F84008A580F /* Exercises */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -211,6 +206,27 @@
 				51465DA822B27176008A580F /* ChooseInstrumentPresenter.swift */,
 			);
 			path = ChooseInstrument;
+			sourceTree = "<group>";
+		};
+		51465DAA22B39F84008A580F /* Exercises */ = {
+			isa = PBXGroup;
+			children = (
+				5140CFBA22AEE27C00DDFD36 /* SingleNoteExercise.swift */,
+				51465D9922B1A53C008A580F /* Exercise.swift */,
+				51465D9B22B1A5C1008A580F /* SingleNoteEndlessExercise.swift */,
+			);
+			path = Exercises;
+			sourceTree = "<group>";
+		};
+		51465DAD22B3ACC7008A580F /* Questions */ = {
+			isa = PBXGroup;
+			children = (
+				51465D9722B1A424008A580F /* MultipleNoteQuestion.swift */,
+				5140CFC222AEF4C500DDFD36 /* SingleNoteQuestion.swift */,
+				5140CFD822AF1FC400DDFD36 /* QuestionState.swift */,
+				51465DAE22B3ACFD008A580F /* ScaleQuestionGenerator.swift */,
+			);
+			path = Questions;
 			sourceTree = "<group>";
 		};
 		59C746EE708A4E9FD9B17614 /* Frameworks */ = {
@@ -355,7 +371,6 @@
 				5140CFD122AF0D0300DDFD36 /* ExerciseListViewModel.swift in Sources */,
 				51465DA922B27176008A580F /* ChooseInstrumentPresenter.swift in Sources */,
 				5140CFE822AFCC5800DDFD36 /* CommonFunctions.swift in Sources */,
-				5140CFBF22AEE48200DDFD36 /* AudioSample.swift in Sources */,
 				51465DA722B2713E008A580F /* ChooseInstrumentViewController.swift in Sources */,
 				5140CFBB22AEE27C00DDFD36 /* SingleNoteExercise.swift in Sources */,
 				5140CFD722AF19F200DDFD36 /* ExerciseViewController.swift in Sources */,
@@ -364,6 +379,7 @@
 				5140CFF322AFDEF500DDFD36 /* Instrument.swift in Sources */,
 				51465D9A22B1A53C008A580F /* Exercise.swift in Sources */,
 				5140CFDD22AFA37E00DDFD36 /* ExerciseListPresenter.swift in Sources */,
+				51465DAF22B3ACFD008A580F /* ScaleQuestionGenerator.swift in Sources */,
 				5140CFC322AEF4C500DDFD36 /* SingleNoteQuestion.swift in Sources */,
 				5140CFCF22AF09F600DDFD36 /* ExerciseViewModel.swift in Sources */,
 				5105A34322AEDDE300624074 /* ExerciseListViewController.swift in Sources */,

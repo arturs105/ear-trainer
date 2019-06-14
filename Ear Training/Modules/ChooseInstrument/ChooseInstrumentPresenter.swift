@@ -21,7 +21,7 @@ class ChooseInstrumentPresenter {
     }
     
     deinit {
-        print("deinit presenter")
+        print ("deinit choose instrument presenter")
     }
     
     func dismiss() {

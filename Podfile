@@ -8,5 +8,6 @@ target 'Ear Training' do
   pod 'RxSwift', '~> 5'
   pod 'RxCocoa', '~> 5'
   pod 'AudioKit', '~> 4.0'
+  pod 'MusicTheorySwift' 
 
 end

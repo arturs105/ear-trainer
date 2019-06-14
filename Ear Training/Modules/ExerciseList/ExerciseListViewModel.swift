@@ -1,4 +1,5 @@
 import Foundation
+import MusicTheorySwift
 import Pitchy
 import RxSwift
 import RxCocoa
@@ -19,19 +20,34 @@ class ExerciseListViewModel {
             questions.append(SingleNoteQuestion(note: randomNote))
         }
     
+        let keys = [
+            Key(type: .c),
+            Key(type: .c, accidental: .sharp), //Swift ftw
+            Key(type: .d),
+            Key(type: .d, accidental: .sharp),
+            Key(type: .e),
+            Key(type: .f),
+            Key(type: .f, accidental: .sharp),
+            Key(type: .g),
+            Key(type: .g, accidental: .sharp),
+            Key(type: .a),
+            Key(type: .a, accidental: .sharp),
+            Key(type: .b),
+        ]
+        
+        let allMajorScaleEndlessExercises = keys.map({key in Scale(type: .major, key: key)})
+            .map({scale in ScaleQuestionGenerator(for: scale)})
+            .map({questionGenerator in SingleNoteEndlessExercise(title: questionGenerator.scale.description, description: "Description", questionGenerator: questionGenerator)})
+        
+        let cMajor = Scale(type: .major, key: Key(type: .c))
+        let cMajorQuestionGenerator = ScaleQuestionGenerator(for: cMajor)
+        
         exercises = [
             SingleNoteExercise(title: "5 questions, only F2, G2, A2 B2", description: "Some random notes", questions: questions),
             SingleNoteExercise(title: "Only F2", description: "Only F2", questions: [SingleNoteQuestion(note: try! Note(letter: .F, octave: 2))]),
             SingleNoteExercise(title: "Only B2", description: "Only F2", questions: [SingleNoteQuestion(note: try! Note(letter: .B, octave: 2))]),
-            SingleNoteEndlessExercise(title: "Endless exercise", description: "Description goes here", questionGenerator: ExerciseListViewModel.getNextQuestion)
         ]
-    }
-    
-    private static func getNextQuestion() -> SingleNoteQuestion {
-        return SingleNoteQuestion(note: AcousticGuitar.availableNotes.randomElement()!)
-    }
-    
-    func chooseInstrument() {
-        print("Choosing an instrument")
+        
+        exercises.append(contentsOf: allMajorScaleEndlessExercises)
     }
 }

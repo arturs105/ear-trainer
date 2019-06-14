@@ -11,6 +11,10 @@ class ChooseInstrumentViewModel {
         instruments = instrumentService.availableInstruments
     }
     
+    deinit {
+        print ("deinit choose instrument VM")
+    }
+    
     func changeActiveInstrument(_ instrument: Instrument) {
         instrumentService.currentlySelectedInstrument = instrument
     }

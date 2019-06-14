@@ -7,6 +7,7 @@ PODS:
     - AudioKit/Core
   - Beethoven (4.0.2):
     - Pitchy (~> 3.0)
+  - MusicTheorySwift (1.2.2)
   - Pitchy (3.0.0)
   - RxCocoa (5.0.0):
     - RxRelay (~> 5)
@@ -18,6 +19,7 @@ PODS:
 DEPENDENCIES:
   - AudioKit (~> 4.0)
   - Beethoven
+  - MusicTheorySwift
   - RxCocoa (~> 5)
   - RxSwift (~> 5)
 
@@ -25,6 +27,7 @@ SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - AudioKit
     - Beethoven
+    - MusicTheorySwift
     - Pitchy
     - RxCocoa
     - RxRelay
@@ -33,11 +36,12 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   AudioKit: ee4ab79e2fffe42e52b8fd8d214eaaea968c368e
   Beethoven: e517331e5087064e1c1fd3d3775fddb8d9f3017d
+  MusicTheorySwift: 429abdba1c1f543a4f5c727ff2115c0485d4e064
   Pitchy: 15407e4425b6d88fa3e7eef8927ba659fab52d7a
   RxCocoa: fcf32050ac00d801f34a7f71d5e8e7f23026dcd8
   RxRelay: 4f7409406a51a55cd88483f21ed898c234d60f18
   RxSwift: 8b0671caa829a763bbce7271095859121cbd895f
 
-PODFILE CHECKSUM: 5740ee3d117e02dc1ee5922565b685d1e5a2aa84
+PODFILE CHECKSUM: ad1bbffe203e0720a8a5744635be3cc659ba6832
 
 COCOAPODS: 1.7.1
