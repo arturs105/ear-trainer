@@ -26,11 +26,14 @@ class ExerciseViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        UIApplication.shared.isIdleTimerDisabled = true
+        
         setupBindings()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         viewModel.stopPlaying()
+        UIApplication.shared.isIdleTimerDisabled = false
     }
     
     private func setupBindings() {
