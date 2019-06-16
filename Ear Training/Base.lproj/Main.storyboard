@@ -56,10 +56,22 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AxL-wX-fKU">
+                                        <rect key="frame" x="0.0" y="718" width="414" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="Fph-Eu-N7d"/>
+                                        </constraints>
+                                        <state key="normal" title="Skip">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="AxL-wX-fKU" secondAttribute="bottom" id="GWd-KD-zS4"/>
+                                    <constraint firstAttribute="trailing" secondItem="AxL-wX-fKU" secondAttribute="trailing" id="LiF-3p-kQV"/>
                                     <constraint firstItem="PkB-dZ-dl7" firstAttribute="centerY" secondItem="7mK-b6-8IX" secondAttribute="centerY" id="SF8-de-yed"/>
+                                    <constraint firstItem="AxL-wX-fKU" firstAttribute="leading" secondItem="7mK-b6-8IX" secondAttribute="leading" id="XUa-An-QUw"/>
                                     <constraint firstItem="PkB-dZ-dl7" firstAttribute="centerX" secondItem="7mK-b6-8IX" secondAttribute="centerX" id="cFS-gQ-Jn5"/>
                                 </constraints>
                             </view>
@@ -159,6 +171,7 @@
                         <viewLayoutGuide key="safeArea" id="6Ww-Hj-eJs"/>
                     </view>
                     <connections>
+                        <outlet property="SkipButton" destination="AxL-wX-fKU" id="8Ng-18-U6i"/>
                         <outlet property="beginLessonButton" destination="m3h-xY-kGy" id="K15-Fj-nqx"/>
                         <outlet property="closeButton" destination="VNa-72-yW5" id="oct-dy-dTG"/>
                         <outlet property="doneButton" destination="1Cq-dG-x8L" id="KgX-Ik-PJh"/>

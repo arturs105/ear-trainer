@@ -10,6 +10,25 @@ protocol AudioService {
     func stopDetectingPitch()
 }
 
+class MockAudioService : AudioService {
+    func playSample(url: URL) throws -> Observable<Unit> {
+        return try DefaultAudioService().playSample(url: url)
+    }
+    
+    func detectPitch() -> Observable<Note> {
+        print("detectPitch")
+        
+        return Observable.just(try! Note(letter: .F, octave: 2))
+            .delay(RxTimeInterval.seconds(1), scheduler: MainScheduler.instance)
+    }
+    
+    func stopDetectingPitch() {
+        print("stopDetectingPitch")
+    }
+    
+    
+}
+
 class DefaultAudioService : NSObject, AVAudioPlayerDelegate, AudioService, PitchEngineDelegate {
     private var audioPlaySubject: PublishSubject<Unit>?
     private var audioPlayer: AVAudioPlayer?

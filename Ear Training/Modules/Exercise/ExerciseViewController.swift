@@ -17,6 +17,7 @@ class ExerciseViewController : UIViewController {
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var lessonOutroView: UIView!
     @IBOutlet weak var doneButton: UIButton!
+    @IBOutlet weak var SkipButton: UIButton!
     
     func inject(presenter: ExercisePresenter, viewModel: ExerciseViewModel) {
         self.presenter = presenter
@@ -46,6 +47,10 @@ class ExerciseViewController : UIViewController {
             .bind(onNext: {[unowned self] _ in self.viewModel.replayNote()})
             .disposed(by: disposeBag)
 
+        SkipButton.rx.tap
+            .subscribe(onNext: viewModel.skip)
+            .disposed(by: disposeBag)
+        
         //UI -> Presenter
         closeButton.rx.tap
             .subscribe(onNext: presenter.dismiss)
@@ -83,6 +88,11 @@ class ExerciseViewController : UIViewController {
         viewModel.exerciseState
             .map(ExerciseViewController.shouldHideOutro)
             .drive(lessonOutroView.rx.isHidden)
+            .disposed(by: disposeBag)
+        
+        viewModel.currentQuestionState
+            .map({state in state != .Listening})
+            .drive(SkipButton.rx.isHidden)
             .disposed(by: disposeBag)
     }
     

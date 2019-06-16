@@ -48,7 +48,6 @@ class ExerciseViewModel {
                 return false
             default:
                 return false
-            
         }
     }
     
@@ -123,6 +122,34 @@ class ExerciseViewModel {
         instrument.stopPlaying()
     }
     
+    public func skip()
+    {
+        func isOnLastQuestion() -> Bool {
+            switch exercise {
+            case is SingleNoteEndlessExercise:
+                return false
+            case let singleNoteExercise as SingleNoteExercise:
+                return questionsAnswered == singleNoteExercise.questions.count - 1
+            default:
+                return false
+            }
+        }
+
+        potentialNote = nil
+        potentialNoteOccurences = 0
+        questionsAnswered += 1
+        
+        if (isOnLastQuestion()) {
+            goToOutro()
+            return
+        }
+        
+        pitchDetectionSubscription?.dispose()
+        pitchDetectionSubscription = nil
+        updateNoteToGuess()
+        currentQuestionStateRelay.accept(.PlayingSample)
+    }
+    
     private func handleStateChange(_ state: CurrentQuestionState) {
         switch state {
             case .PlayingSample:
@@ -184,7 +211,7 @@ class ExerciseViewModel {
             return
         }
         
-        try! updateNoteToGuess()
+        updateNoteToGuess()
     
         DispatchQueue.main.asyncAfter(deadline: .now() + secondsBeforeNextQuestion) { [unowned self] in
             self.currentQuestionStateRelay.accept(.PlayingSample)
